@@ -1,4 +1,4 @@
-package cn.shuyiio.test.thread;
+package thread;
 
 import org.junit.Test;
 
