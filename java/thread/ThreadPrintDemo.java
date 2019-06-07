@@ -1,12 +1,17 @@
 package thread;
 
+import java.io.Serializable;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class ThreadPrintDemo {
+public class ThreadPrintDemo  implements Serializable {
 
     static AtomicInteger cxsNum = new AtomicInteger(0);
 
     static volatile boolean flag = false;
+
+
+
+
 
 
     public static void main(String[] args) {
