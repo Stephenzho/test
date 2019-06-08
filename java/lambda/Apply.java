@@ -1,9 +1,13 @@
 package lambda;
 
+import com.sun.javafx.image.IntPixelGetter;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.Callable;
+import java.util.function.BiFunction;
+import java.util.function.Function;
 import java.util.function.IntPredicate;
 import java.util.function.Predicate;
 
@@ -23,7 +27,7 @@ public class Apply {
     }
 
     public Callable<String> fetch() {
-        return () -> "Tricky example ;-)";
+        return () -> "Tricky example ";
     }
 
 
@@ -37,17 +41,33 @@ public class Apply {
         result.add("gfda");
         List<String> list = filter(result, r  ->  r.contains("a"));
 
-
+        //
         IntPredicate intp = (int i) -> i % 2 == 0;
 
 
+        //
+        result.sort(String::compareToIgnoreCase);
 
-        System.out.println(list);
+        //
+        Function<String, Integer> stringToInteger = Integer::parseInt;
 
+        //
 
-        Comparator<Integer> byWeight = (Integer i, Integer j) -> i > j ? 1 : 0;
-
+        int a = 123;
+        Comparator<Integer> byWeight = (Integer i, Integer j) -> i > j ? a : 0;
         System.out.println(byWeight.compare(1, 2));
+
+
+        //
+        BiFunction<String, Integer, Apple> appleBiFunction = Apple::new;
+
+        Apple apple = appleBiFunction.apply("h", 123);
+
+
+        System.out.println(apple.toString());
+
+
+
 
     }
 
